@@ -242,7 +242,7 @@ developer : ᴘʀᴀᴅᴇᴇᴘ
 </b>""" 
 
     
-    CAPTION = """<b><a href=https://t.me/B4UMOVIEHOUSE><b>{file_name}</b></a></b>"""
+    CAPTION = """<b><a href=https://t.me/B4UMOVIEHOUSE><b>{file_name}</b></a>\n\n𝖩𝗈𝗂𝗇➥ 「<a href="https://t.me/B4UMOVIEHOUSE">𝗨𝗽𝗱𝗮𝘁𝗲 𝗺𝗼𝘃𝗶𝗲 𝗰𝗵𝗮𝗻𝗻𝗲𝗹</a>」</b>"""
 
     IMDB_TEMPLATE_TXT = """
 <b>ʜᴇʏ {message.from_user.mention}, ʜᴇʀᴇ ɪꜱ ᴛʜᴇ ʀᴇꜱᴜʟᴛꜱ ꜰᴏʀ ʏᴏᴜʀ ǫᴜᴇʀʏ {search}.
