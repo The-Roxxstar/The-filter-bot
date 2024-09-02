@@ -169,7 +169,7 @@ async def start(client, message):
             gtxt = "ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 🌘"
         else:
             gtxt = "ɢᴏᴏᴅ ɴɪɢʜᴛ 🌑"
-        m=await message.reply_sticker("CAACAgQAAxkBAAEn9_ZmGp1uf1a38UrDhitnjOOqL1oG3gAC9hAAAlC74FPEm2DxqNeOmB4E") 
+        m=await message.reply_sticker("CAACAgQAAx0CebCJdQACFWlm1Rm3DOPLD-86iCVDx6mOu04WKAACrBYAAi98mVAdrqc4ApXyJh4E") 
         await asyncio.sleep(1)
         await m.delete()
         await message.reply_photo(
@@ -226,7 +226,7 @@ async def start(client, message):
             gtxt = "ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 🌘"
         else:
             gtxt = "ɢᴏᴏᴅ ɴɪɢʜᴛ 🌑"
-        m=await message.reply_sticker("CAACAgQAAxkBAAEn9_ZmGp1uf1a38UrDhitnjOOqL1oG3gAC9hAAAlC74FPEm2DxqNeOmB4E") 
+        m=await message.reply_sticker("CAACAgQAAx0CebCJdQACFWpm1Rm5I6QTDa_SCzFMzTr0tWwVkgACTBYAAtURSVGPuDSsezeyDx4E") 
         await asyncio.sleep(1)
         await m.delete()
         await message.reply_photo(
@@ -1387,7 +1387,7 @@ async def refer(bot, message):
         InlineKeyboardButton(f'⏳ {referdb.get_refer_points(message.from_user.id)}', callback_data='ref_point'),
         InlineKeyboardButton('Close', callback_data='close_data')
     ]]  
-    m=await message.reply_sticker("CAACAgQAAxkBAAEkt_Rl_7138tgHJdEsqSNzO5mPWioZDgACGRAAAudLcFGAbsHU3KNJUx4E")      
+    m=await message.reply_sticker("CAACAgQAAx0CebCJdQACFWpm1Rm5I6QTDa_SCzFMzTr0tWwVkgACTBYAAtURSVGPuDSsezeyDx4E")      
     await m.delete()
     reply_markup = InlineKeyboardMarkup(btn)
     await message.reply_photo(
