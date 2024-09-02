@@ -2176,7 +2176,7 @@ async def auto_filter(client, msg, spoll=False):
         if not settings["button"]:
             cap+="\n\n<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
             for idx, file in enumerate(files[:500]):
-                cap += f"<b>\n{idx + 1}. <a href='https://telegram.me/{temp.U_NAME}?start=jisshu_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n</a></b>"
+                cap += f"<b>\n{idx + 1}. <a href='https://telegram.me/{temp.U_NAME}?start=PY_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n</a></b>"
     else:
         if settings["button"]:
             cap = f"<b>🙋‍♂ Hᴇʏ {message.from_user.mention}\n♻️ ʜᴇʀᴇ ᴀʀᴇ ᴛʜᴇ ʀᴇꜱᴜʟᴛꜱ ꜰᴏʀ ʏᴏᴜʀ ǫᴜᴇʀʏ\n☞ {search}\n\n📚 Requested Files 👇\n\n</b>"
@@ -2184,7 +2184,7 @@ async def auto_filter(client, msg, spoll=False):
             cap = f"<b>🙋‍♂ Hᴇʏ {message.from_user.mention} ♻️ ʜᴇʀᴇ ᴀʀᴇ ᴛʜᴇ ʀᴇꜱᴜʟᴛꜱ ꜰᴏʀ ʏᴏᴜʀ ǫᴜᴇʀʏ\n☞ {search}\n\n📚 Requested Files 👇\n\n</b>"
             # cap+="<b>Hᴇʏ {message.from_user.mention}, Hᴇʀᴇ ɪs ᴛʜᴇ ʀᴇsᴜʟᴛ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {search} \n\n</b>"
             for idx, file in enumerate(files[:500]):
-                cap += f"<b>{idx + 1}. <a href='https://telegram.me/{temp.U_NAME}?start=jisshu_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+                cap += f"<b>{idx + 1}. <a href='https://telegram.me/{temp.U_NAME}?start=PY_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
 
     if imdb and imdb.get('poster'):
         try:
