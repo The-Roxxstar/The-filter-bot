@@ -1448,56 +1448,72 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer("Yᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ sᴜғғɪᴄɪᴀɴᴛ ʀɪɢᴛs ᴛᴏ ᴅᴏ ᴛʜɪs !", show_alert=True)   
 
     elif query.data.startswith("stream"):
-        user_id = query.from_user.id
-        file_id = query.data.split('#', 1)[1]
-        log_msg = await client.send_cached_media(
-        chat_id=LOG_CHANNEL,
-        file_id=file_id
-        )
-        fileName = quote_plus(get_name(log_msg))
-        online = f"{URL}watch/{str(log_msg.id)}/{fileName}?hash={get_hash(log_msg)}"
-        download = f"{URL}{str(log_msg.id)}/?hash={get_hash(log_msg)}"
-    # Debugging output
-        print(f"JS_WEB_PREMIUM: {JS_WEB_PREMIUM}")
-        has_premium = await db.has_premium_access(user_id)
-        print(f"User ID: {user_id}, Has Premium Access: {has_premium}")
+       user_id = query.from_user.id
+       file_id = query.data.split('#', 1)[1]
+       log_msg = await client.send_cached_media(
+       chat_id=LOG_CHANNEL,
+       file_id=file_id
+       )
+       fileName = quote_plus(get_name(log_msg))
+       online = f"{URL}watch/{str(log_msg.id)}/{fileName}?hash={get_hash(log_msg)}"
+       download = f"{URL}{str(log_msg.id)}/?hash={get_hash(log_msg)}"
 
-    # Check if premium features are enabled and if the user has premium access
-        if JS_WEB_PREMIUM and has_premium:
-            btn = [[
-            InlineKeyboardButton("ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download),
-            InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ", url=online)
-            ],[
-            InlineKeyboardButton('🖥️ Watch On Telegram 🧿', web_app=WebAppInfo(url=online))
-            ],[
-            InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
-            ]]
-        else:
-        # Buttons or message for non-premium users or if premium is disabled
-              btn = [[
-              InlineKeyboardButton("⭐️ Get Premium ", callback_data="seeplans")
-              ],[
-              InlineKeyboardButton("ɢᴇᴛ ғʀᴇᴇ ᴛʀᴀɪʟ ғᴏʀ 𝟻 ᴍɪɴᴜᴛᴇꜱ ☺️", callback_data="get_trail")
-              ],[
-              InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
-              ]]
-        await query.edit_message_reply_markup(
-              reply_markup=InlineKeyboardMarkup(btn)
-              )
-        username = query.from_user.mention
-        await log_msg.reply_text(
-              text=f"#LinkGenerated\n\nIᴅ : <code>{user_id}</code>\nUꜱᴇʀɴᴀᴍᴇ : {username}\n\nNᴀᴍᴇ : {fileName}",
-              quote=True,
-              disable_web_page_preview=True,
-              reply_markup=InlineKeyboardMarkup([
-              [
-              InlineKeyboardButton("🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download),
-              InlineKeyboardButton('ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🧿', url=online)
-              ] if JS_WEB_PREMIUM and has_premium else [
-              InlineKeyboardButton("⭐️ Get Premium ", url=online)
-              ]
-              ]))
+    # Remove or comment out these debugging lines
+    # print(f"JS_WEB_PREMIUM: {JS_WEB_PREMIUM}")
+    # has_premium = await db.has_premium_access(user_id)
+    # print(f"User ID: {user_id}, Has Premium Access: {has_premium}")
 
+       has_premium = await db.has_premium_access(user_id)
+
+    # Create the buttons based on the JS_WEB_PREMIUM and has_premium flags
+       if JS_WEB_PREMIUM and has_premium:
+          btn = [[
+               InlineKeyboardButton("ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download),
+               InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ", url=online)
+               ], [
+               InlineKeyboardButton('🖥️ Watch On Telegram 🧿', web_app=WebAppInfo(url=online))
+               ], [
+               InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
+               ]]
+       elif not JS_WEB_PREMIUM:
+        # Show buttons to everyone if JS_WEB_PREMIUM is False
+           btn = [[
+               InlineKeyboardButton("ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download),
+               InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ", url=online)
+               ], [
+               InlineKeyboardButton('🖥️ Watch On Telegram 🧿', web_app=WebAppInfo(url=online))
+               ], [
+               InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
+                             ]]
+       else:
+        # Buttons or message for non-premium users if premium is enabled
+           btn = [[
+               InlineKeyboardButton("⭐️ Get Premium ", callback_data="seeplans")
+               ], [
+               InlineKeyboardButton("ɢᴇᴛ ғʀᴇᴇ ᴛʀᴀɪʟ ғᴏʀ 𝟻 ᴍɪɴᴜᴛᴇꜱ ☺️", callback_data="get_trail")
+               ], [
+               InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
+               ]]
+
+       await query.edit_message_reply_markup(
+          reply_markup=InlineKeyboardMarkup(btn)
+          )    
+       username = query.from_user.mention
+       await log_msg.reply_text(
+          text=f"#LinkGenerated\n\nIᴅ : <code>{user_id}</code>\nUꜱᴇʀɴᴀᴍᴇ : {username}\n\nNᴀᴍᴇ : {fileName}",
+          quote=True,
+          disable_web_page_preview=True,
+          reply_markup=InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton("🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download),
+                InlineKeyboardButton('ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🧿', url=online)
+            ] if JS_WEB_PREMIUM and has_premium else [
+                InlineKeyboardButton("🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download),
+                InlineKeyboardButton('ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🧿', url=online)
+            ]
+        ])
+       )    
+       
     elif query.data == "pagesn1":
         await query.answer(text=script.PAGE_TXT, show_alert=True)
 
@@ -2176,7 +2192,7 @@ async def auto_filter(client, msg, spoll=False):
         if not settings["button"]:
             cap+="\n\n<b>📚 <u>Your Requested Files</u> 👇\n\n</b>"
             for idx, file in enumerate(files[:500]):
-                cap += f"<b>\n{idx + 1}. <a href='https://telegram.me/{temp.U_NAME}?start=PY_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n</a></b>"
+                cap += f"<b>\n{idx + 1}. <a href='https://telegram.me/{temp.U_NAME}?start=jisshu_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n</a></b>"
     else:
         if settings["button"]:
             cap = f"<b>🙋‍♂ Hᴇʏ {message.from_user.mention}\n♻️ ʜᴇʀᴇ ᴀʀᴇ ᴛʜᴇ ʀᴇꜱᴜʟᴛꜱ ꜰᴏʀ ʏᴏᴜʀ ǫᴜᴇʀʏ\n☞ {search}\n\n📚 Requested Files 👇\n\n</b>"
@@ -2184,7 +2200,7 @@ async def auto_filter(client, msg, spoll=False):
             cap = f"<b>🙋‍♂ Hᴇʏ {message.from_user.mention} ♻️ ʜᴇʀᴇ ᴀʀᴇ ᴛʜᴇ ʀᴇꜱᴜʟᴛꜱ ꜰᴏʀ ʏᴏᴜʀ ǫᴜᴇʀʏ\n☞ {search}\n\n📚 Requested Files 👇\n\n</b>"
             # cap+="<b>Hᴇʏ {message.from_user.mention}, Hᴇʀᴇ ɪs ᴛʜᴇ ʀᴇsᴜʟᴛ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {search} \n\n</b>"
             for idx, file in enumerate(files[:500]):
-                cap += f"<b>{idx + 1}. <a href='https://telegram.me/{temp.U_NAME}?start=PY_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+                cap += f"<b>{idx + 1}. <a href='https://telegram.me/{temp.U_NAME}?start=jisshu_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
 
     if imdb and imdb.get('poster'):
         try:
