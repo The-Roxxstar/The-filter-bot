@@ -20,7 +20,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', "")
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
-PICS = (environ.get('PICS', 'https://te.legra.ph/file/b4a3747fc57c0a78b8ce7.jpg https://te.legra.ph/file/96bfa2b897869b53f3c1b.jpg')).split() #SAMPLE PIC
+PICS = (environ.get('PICS', 'https://te.legra.ph/file/b4a3747fc57c0a78b8ce7.jpg https://te.legra.ph/file/96bfa2b897869b53f3c1b.jpg https://telegra.ph/file/ab7c45feabcd446799ec9.jpg https://telegra.ph/file/be0e05a69125057f7403d.jpg https://telegra.ph/file/083d98858adfc45ce1761.jpg https://telegra.ph/file/c3e7e855f6fe2deb7fe21.jpg https://telegra.ph/file/966dae7b6f91a58aa037c.jpg https://telegra.ph/file/fa74ca254cc4368c167cd.jpg https://telegra.ph/file/08e2e68f2d9c959ca30fc.jpg https://telegra.ph/file/1d63c8f8102d8bf6dd90f.jpg')).split() #SAMPLE PIC
 NOR_IMG = environ.get("NOR_IMG", "https://graph.org/file/e20b5fdaf217252964202.jpg")
 MELCOW_VID = environ.get("MELCOW_VID", "https://graph.org/file/70c306053d29595749a52.mp4")
 SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://graph.org/file/9f3f47c690bbcc67633c2.jpg'))
@@ -33,15 +33,15 @@ REFER_PICS = (environ.get("REFER_PICS", "https://graph.org/file/1a2e64aee3d4d10e
 STREAM_SITE = (environ.get('STREAM_SITE', 'ziplinker.net')) # not support
 STREAM_API = (environ.get('STREAM_API', '9d34b267ed4000cf536103bfec31a7a096ff4973'))
 STREAMHTO = (environ.get('STREAMHTO', ''))
-BOT_USERNAME = environ.get("BOT_USERNAME", "MickeyMouseXbot")
+BOT_USERNAME = environ.get("BOT_USERNAME", "TheMovieFilterBot")
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5294914915').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5294914915 7033385522').split()]
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002150820537 -1002235533210').split()] #Channel id for auto indexing ( make sure bot is admin )
-auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '7262773477').split()]
+auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '7262773477 5294914915 7033385522').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '7262773477').split()]
-auth_channel = environ.get('AUTH_CHANNEL', '-1002245438957') #Channel / Group Id for force sub ( make sure bot is admin )
+auth_channel = environ.get('AUTH_CHANNEL', '') #Channel / Group Id for force sub ( make sure bot is admin )
 auth_grp = environ.get('AUTH_GROUP')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
@@ -136,7 +136,7 @@ else:
 STREAM_MODE = bool(environ.get('STREAM_MODE', True)) # Set True or Flase
 
 # online Stream and Download support only premium user, True or Flase
-JS_WEB_PREMIUM = is_enabled((environ.get('JS_WEB_PREMIUM', "True")), True)
+JS_WEB_PREMIUM = is_enabled((environ.get('JS_WEB_PREMIUM', "False")), False)
 
 # website themes changing (https://bootswatch.com)
 JS_THEMES = "cerulean"
