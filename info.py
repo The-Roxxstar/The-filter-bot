@@ -13,8 +13,8 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ.get('API_ID', '29728878'))
-API_HASH = environ.get('API_HASH', 'a961168f7807061e77e1fb39c3f6ef71')
+API_ID = int(environ.get('API_ID', '21014933'))
+API_HASH = environ.get('API_HASH', 'c6576c45c80fd11776378fd931bed8e9')
 BOT_TOKEN = environ.get('BOT_TOKEN', "")
 
 # Bot settings
@@ -33,20 +33,20 @@ REFER_PICS = (environ.get("REFER_PICS", "https://graph.org/file/1a2e64aee3d4d10e
 STREAM_SITE = (environ.get('STREAM_SITE', 'ziplinker.net')) # not support
 STREAM_API = (environ.get('STREAM_API', '9d34b267ed4000cf536103bfec31a7a096ff4973'))
 STREAMHTO = (environ.get('STREAMHTO', ''))
-BOT_USERNAME = environ.get("BOT_USERNAME", "TheMovieFilterBot")
+BOT_USERNAME = environ.get("BOT_USERNAME", "I_PopCornBot")
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5294914915 7033385522').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002150820537 -1002235533210').split()] #Channel id for auto indexing ( make sure bot is admin )
-auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '7262773477 5294914915 7033385522').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6045160821').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001934525883 -1002233647976 -1002152906241 -1002152906241 -1002181251938 -1002248009127').split()] #Channel id for auto indexing ( make sure bot is admin )
+auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '7262773477').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '7262773477').split()]
 auth_channel = environ.get('AUTH_CHANNEL', '') #Channel / Group Id for force sub ( make sure bot is admin )
 auth_grp = environ.get('AUTH_GROUP')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
-support_chat_id = environ.get('SUPPORT_CHAT_ID', '-1002041612661') # support group id ( make sure bot is admin )
-reqst_channel = environ.get('REQST_CHANNEL_ID', '-1002107375884') # request channel id ( make sure bot is admin )
+support_chat_id = environ.get('SUPPORT_CHAT_ID', '-1002235669709') # support group id ( make sure bot is admin )
+reqst_channel = environ.get('REQST_CHANNEL_ID', '-1002057420806') # request channel id ( make sure bot is admin )
 REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_channel) else None
 SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", False))
@@ -58,7 +58,7 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 
 #Auto approve 
-CHAT_ID = [int(app_chat_id) if id_pattern.search(app_chat_id) else app_chat_id for app_chat_id in environ.get('CHAT_ID', '-1002170373025').split()]
+CHAT_ID = [int(app_chat_id) if id_pattern.search(app_chat_id) else app_chat_id for app_chat_id in environ.get('CHAT_ID', '-1002235669709').split()]
 TEXT = environ.get("APPROVED_WELCOME_TEXT", "<b>{mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ ᴛᴏ ᴊᴏɪɴ {title} ɪs ᴀᴘᴘʀᴏᴠᴇᴅ.\n\‣ ᴘᴏᴡᴇʀᴇᴅ ʙʏ @B4UMovieHouse</b>")
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
@@ -71,13 +71,13 @@ DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in enviro
 MAX_B_TN = environ.get("MAX_B_TN", "5")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/B4UMOVIEZONE')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/YADUVANSHIXBOTZ')
-TUTORIAL = environ.get('TUTORIAL', 'https://t.me/How_to_open_movielink')
+GRP_LNK = environ.get('GRP_LNK', 'https://t.me/PopCorn_Movie_Group')
+CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/i_popcorn_movie_update')
+TUTORIAL = environ.get('TUTORIAL', 'https://t.me/i_popcorn_movie_update/31')
 IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', True))
 MSG_ALRT = environ.get('MSG_ALRT', 'ᴛʜᴀɴᴋ ʏᴏᴜ 💖ᴘʀᴀᴅᴇᴇᴘ💖')
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002179479692')) #Log channel id ( make sure bot is admin )
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/YaduvanshiXsupport') #Support group link ( make sure bot is admin )
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002173261989')) #Log channel id ( make sure bot is admin )
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/PopCorn_Movie_Group') #Support group link ( make sure bot is admin )
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "False")), False)
 AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)
