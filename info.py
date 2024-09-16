@@ -20,7 +20,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', "")
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
-PICS = (environ.get('PICS', 'https://te.legra.ph/file/b4a3747fc57c0a78b8ce7.jpg https://te.legra.ph/file/96bfa2b897869b53f3c1b.jpg https://telegra.ph/file/ab7c45feabcd446799ec9.jpg https://telegra.ph/file/be0e05a69125057f7403d.jpg https://telegra.ph/file/083d98858adfc45ce1761.jpg https://telegra.ph/file/c3e7e855f6fe2deb7fe21.jpg https://telegra.ph/file/966dae7b6f91a58aa037c.jpg https://telegra.ph/file/fa74ca254cc4368c167cd.jpg https://telegra.ph/file/08e2e68f2d9c959ca30fc.jpg https://telegra.ph/file/1d63c8f8102d8bf6dd90f.jpg')).split() #SAMPLE PIC
+PICS = (environ.get('PICS', 'https://te.legra.ph/file/b4a3747fc57c0a78b8ce7.jpg')).split() #SAMPLE PIC
 NOR_IMG = environ.get("NOR_IMG", "https://graph.org/file/e20b5fdaf217252964202.jpg")
 MELCOW_VID = environ.get("MELCOW_VID", "https://graph.org/file/70c306053d29595749a52.mp4")
 SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://graph.org/file/9f3f47c690bbcc67633c2.jpg'))
@@ -38,10 +38,10 @@ BOT_USERNAME = environ.get("BOT_USERNAME", "I_PopCornBot")
 # Admins, Channels & Users
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6045160821').split()]
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001934525883 -1002233647976 -1002152906241 -1002152906241 -1002181251938 -1002248009127').split()] #Channel id for auto indexing ( make sure bot is admin )
-auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '7262773477').split()]
+auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
-PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '7262773477').split()]
-auth_channel = environ.get('AUTH_CHANNEL', '') #Channel / Group Id for force sub ( make sure bot is admin )
+PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '').split()]
+auth_channel = environ.get('AUTH_CHANNEL', '-1002057420806') #Channel / Group Id for force sub ( make sure bot is admin )
 auth_grp = environ.get('AUTH_GROUP')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
@@ -59,7 +59,7 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 #Auto approve 
 CHAT_ID = [int(app_chat_id) if id_pattern.search(app_chat_id) else app_chat_id for app_chat_id in environ.get('CHAT_ID', '-1002235669709').split()]
-TEXT = environ.get("APPROVED_WELCOME_TEXT", "<b>{mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ ᴛᴏ ᴊᴏɪɴ {title} ɪs ᴀᴘᴘʀᴏᴠᴇᴅ.\n\‣ ᴘᴏᴡᴇʀᴇᴅ ʙʏ @B4UMovieHouse</b>")
+TEXT = environ.get("APPROVED_WELCOME_TEXT", "<b>{mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ ᴛᴏ ᴊᴏɪɴ {title} ɪs ᴀᴘᴘʀᴏᴠᴇᴅ.\n\‣ ᴘᴏᴡᴇʀᴇᴅ ʙʏ @PopCorn_Movie_Group</b>")
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
 # Others
@@ -75,7 +75,7 @@ GRP_LNK = environ.get('GRP_LNK', 'https://t.me/PopCorn_Movie_Group')
 CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/i_popcorn_movie_update')
 TUTORIAL = environ.get('TUTORIAL', 'https://t.me/i_popcorn_movie_update/31')
 IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', True))
-MSG_ALRT = environ.get('MSG_ALRT', 'ᴛʜᴀɴᴋ ʏᴏᴜ 💖ᴘʀᴀᴅᴇᴇᴘ💖')
+MSG_ALRT = environ.get('MSG_ALRT', 'ᴛʜᴀɴᴋ ʏᴏᴜ 💖RoxStar💖')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002173261989')) #Log channel id ( make sure bot is admin )
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/PopCorn_Movie_Group') #Support group link ( make sure bot is admin )
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
